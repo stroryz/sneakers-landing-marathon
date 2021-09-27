@@ -5,4 +5,11 @@
 @import "settings";
 
 // подключения компонентов страницы
+// большие компоненты
 @import "./components/header";
+@import "./components/hero";
+
+// малые компоненты
+@import "./components/nav";
+@import "./components/cart";
+@import "./components/logo";
