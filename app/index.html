@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#111111" />
+    <title>New site</title>
+    <link rel="stylesheet" href="css/vendor.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="header">
+  <div class="container grid header__container">
+    <div class="header__left">
+      <a class="logo header__logo">SneakMax</a>
+    </div>
+    <div class="header__right">
+      <nav class="nav header__nav">
+        <ul class="nav__list list-reset">
+          <li class="nav__item"><a href="" class="nav__link">Каталог</a></li>
+          <li class="nav__item"><a href="" class="nav__link">О нас</a></li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Подбор товара</a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Наша команда</a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Доставка и оплата</a>
+          </li>
+          <li class="nav__item"><a href="" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="cart header__cart">
+        <button class="btn-reset cart cart__btn">
+          <svg>
+            <use xlink:href="img/sprite.svg#cart"></use>
+          </svg>
+          <div class="cart__count">1</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main class="main">
+        <section class="hero">
+  <span class="hero__bg-text" aria-hidden="true">SneakMax</span>
+  <div class="container hero__container">
+    <h1 class="hero__title">
+      Кроссовки известных брендов с&nbsp;доставкой по&nbsp;России и&nbsp;СНГ
+    </h1>
+    <p class="hero__descr">
+      Мы&nbsp;продаем кроссовки брендов Nike, Adidas, Puma, Reebok, Converse
+      и&nbsp;многие другие по&nbsp;низким ценам
+    </p>
+    <button class="btn-reset btn btn--primary js-move-to">
+      Перейти к покупкам
+    </button>
+  </div>
+</section>
+ <section class="catalog">
+  <div class="container catalog__container">
+    <h2 class="title catalog__title">Каталог</h2>
+    <div class="catalog__content grid">
+      <div class="catalog__left">
+        <h3 class="catalog__subtitle">Подбор по&nbsp;параметрам</h3>
+        <div class="catalog__prop">
+          <strong class="catalog__caption">Цена, руб</strong>
+          <div class="catalog-price catalog__prop-inner">
+            <input type="text" class="catalog-price__input" />
+            <input type="text" class="catalog-price__input" />
+            <div class="catalog-price_-element"></div>
+          </div>
+        </div>
+        <div class="catalog__prop">
+          <strong class="catalog__caption">Пол</strong>
+          <div class="catalog__prop-inner catalog__prop-checkboxes">
+            <label class="custom-checkbox">
+              <input type="checkbox" class="custom-checkbox__field" />
+              <span class="custom-checkbox__content">Мужской</span>
+            </label>
+            <label class="custom-checkbox">
+              <input type="checkbox" class="custom-checkbox__field" />
+              <span class="custom-checkbox__content">Женский</span>
+            </label>
+          </div>
+        </div>
+        <div class="catalog__prop">
+          <strong class="catalog__caption">Размер</strong>
+          <div class="catalog__prop-inner">
+            <table class="sizes-table">
+              <caption>
+                Таблица размеров
+              </caption>
+              <tbody>
+                <tr>
+                  <td>35</td>
+                  <td>36</td>
+                  <td>37</td>
+                </tr>
+                <tr>
+                  <td>38</td>
+                  <td>39</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>41</td>
+                  <td>42</td>
+                  <td>43</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <button class="btn btn-reset btn--secondary">Применить</button>
+        <button class="catalog__reset btn-reset">Сбросить</button>
+      </div>
+      <div class="catalog__grid">
+        <ul class="catalog-list grid list-reset">
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+          <li class="catalog-list__item">
+            <article class="product">
+              <div class="product__image">
+                <img src="img/product-image.jpg" alt="продукт 1" />
+                <div class="product__btns">
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Показать информацию о товаре"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#eye"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-reset product__btn"
+                    aria-label="Добавить товар в корзину"
+                  >
+                    <svg>
+                      <use xlink:href="img/sprite.svg#cart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 class="product__title">Кроссовки Nike Air Force 1 '07 QS</h3>
+              <span class="product__price">11 000 ₽</span>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+         
+         
+         
+      </main>
+      <footer class="footer">
+  <div class="container"></div>
+</footer>
+
+      
+    </div>
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
