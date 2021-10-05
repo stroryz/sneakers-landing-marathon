@@ -383,6 +383,12 @@
 </section>
 
         <section class="about">
+  <img
+    src="img/about-figure.svg"
+    alt=""
+    class="about__figure"
+    aria-hidden="true"
+  />
   <div class="container about__container">
     <div class="about__text">
       <h2 class="title about__title">Пара слов о нас</h2>
@@ -401,9 +407,156 @@
     </div>
   </div>
 </section>
+ <section class="quiz">
+  <div class="container">
+    <h2 class="visually-hidden">Подбор товара по вашим параметрам - квиз</h2>
+    <div class="quiz__content">
+      <h3 class="title quiz__title">Мы подберем идеальную пару для вас</h3>
+      <p class="quiz__descr">
+        Ответьте на три вопроса и мы вышлем каталог с самыми подходящими для вас
+        моделями
+      </p>
+      <form action="" class="quiz-form" method="POST">
+        <div class="quiz-questions"></div>
+        <div class="asd">asd</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+        <section class="team">
+  <img
+    src="img/team-figure.svg"
+    alt=""
+    class="team__figure"
+    aria-hidden="true"
+  />
+  <div class="container">
+    <h2 class="title team__title">Наша команда</h2>
+    <ul class="team__list grid list-reset">
+      <li class="team__item">
+        <img src="img/team-1.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+      <li class="team__item">
+        <img src="img/team-2.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+      <li class="team__item">
+        <img src="img/team-3.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+      <li class="team__item">
+        <img src="img/team-4.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+      <li class="team__item">
+        <img src="img/team-5.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+      <li class="team__item">
+        <img src="img/team-6.jpg" alt="Максим Золотарев" class="team__img" />
+        <strong class="team__subtitle">Максим Золотарев</strong>
+        <span class="team__post">Администратор</span>
+      </li>
+    </ul>
+  </div>
+</section>
+ <section class="faq">
+  <div class="container faq__container">
+    <h2 class="title faq__title">Часто задаваемые вопросы</h2>
+    <ul class="faq__list list-reset">
+      <li class="faq-accordion">
+        <button class="faq-accordion__control btn-reset" aria-expanded="false">
+          <span class="faq-accordion__title">Вопрос 1</span>
+          <span class="faq-accordion__icon"></span>
+        </button>
+        <div class="faq-accordion__content" aria-hidden="true">
+          <p>
+            А это ответ 1: в комплексе функционируют 6 детских садов с
+            площадками, воспитателями и всякими другими людьми
+          </p>
+        </div>
+      </li>
+      <li class="faq-accordion">
+        <button class="faq-accordion__control btn-reset" aria-expanded="false">
+          <span class="faq-accordion__title">Вопрос 2</span>
+          <span class="faq-accordion__icon"></span>
+        </button>
+        <div class="faq-accordion__content" aria-hidden="true">
+          <p>
+            А это ответ 2: в комплексе функционируют 6 детских садов с
+            площадками, воспитателями и всякими другими людьми
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+        <section class="contacts">
+  <div class="container contacts__container">
+    <div class="contacts__text">
+      <h2 class="title contacts__title">Контакты</h2>
+      <div class="contacts__item">
+        <h3 class="contacts__subtitle">
+          Главный офис
+          <span class="tooltip">
+            <button
+              class="tooltip__btn btn-reset"
+              aria-describedby="office"
+              aria-label="Уточнение"
+            >
+              <svg>
+                <use xlink:href="img/sprite.svg#tooltip"></use>
+              </svg>
+            </button>
+            <span class="tooltip__txt" role="tooltip" id="office">
+              <span class="visually-hidden">Тултип: </span>
+              Адрес и&nbsp;телефон для корреспонденции, инвесторов. Вопросы
+              о&nbsp;доставке, качестве обслуживания и&nbsp;товара просьба
+              задавать в&nbsp;отдел продаж.
+            </span>
+          </span>
+        </h3>
+        <a href="tel:+78007898989" class="contacts__phone">+7 800 789 89 89</a>
+        <span class="contacts__adress"
+          >г. Санкт-Петербург, Комсомольская, 43 к1</span
+        >
+      </div>
+      <div class="contacts__item">
+        <h3 class="contacts__subtitle">Отдел продаж</h3>
+        <a href="tel:+78007898989" class="contacts__phone">+7 800 789 89 89</a>
+        <span class="contacts__adress"
+          >г. Санкт-Петербург, Комсомольская, 43 к1</span
+        >
+      </div>
+      <ul class="social list-reset">
+        <li class="social__item">
+          <a
+            href="#"
+            class="social__link social__link--vk"
+            aria-label="Мы во Вконтакте"
+          ></a>
+        </li>
+        <li class="social__item">
+          <a
+            href="#"
+            class="social__link social__link--insta"
+            aria-label="Мы в Инстаграмм"
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="contacts__map" id="map"></div>
+</section>
  
-         
-         
       </main>
       <footer class="footer">
   <div class="container"></div>
