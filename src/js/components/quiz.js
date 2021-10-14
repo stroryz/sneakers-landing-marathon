@@ -136,26 +136,27 @@ class Quiz {
 	}
 
 	init() {
-		console.log('init!');
+		// console.log('init!');
 		this.$el.innerHTML = quizTemplate(this.data[this.counter], this.dataLength, this.options);
 	}
 
 	nextQuestion() {
-		console.log('next question!');
+		// console.log('next question!');
 
 		if (this.valid()) {
 			if (this.counter + 1 < this.dataLength) {
 				this.counter++;
 				this.$el.innerHTML = quizTemplate(this.data[this.counter], this.dataLength, this.options);
 
-				// if ((this.counter + 1 == this.dataLength)) {
-				// 	// this.$el.querySelector('quiz-bottom').insertAdjacentHTML('beforeend', `<button type="button" data-send>${this.options.sendBtnText}</button>`)
-				// 	// this.$el.querySelector('[data-next-btn]').remove();
-				// }
+				if ((this.counter + 1 == this.dataLength)) {
+					document.querySelector('.quiz-question__answers').style.display = 'block';
+				}
 			} else {
-				console.log('А все! конец!');
+				// console.log('А все! конец!');
         document.querySelector('.quiz-questions').style.display = 'none';
-        document.querySelector('.asd').style.display = 'block';
+        document.querySelector('.last-question').style.display = 'block';
+        document.querySelector('.quiz__title').textContent = 'Ваша подборка готова!';
+        document.querySelector('.quiz__descr').textContent = 'Оставьте свои контактные данные, чтобы бы мы могли отправить  подготовленный для вас каталог';
 			}
 		} else {
 			console.log('Не валидно!')
@@ -163,7 +164,7 @@ class Quiz {
 	}
 
 	events() {
-		console.log('events!')
+		// console.log('events!')
 		this.$el.addEventListener('click', (e) => {
 			if (e.target == document.querySelector('[data-next-btn]')) {
 				this.addToSend();
