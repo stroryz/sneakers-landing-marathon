@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .product {
   overflow: hidden;
   border-radius: 4px;
@@ -13,7 +15,7 @@
     height: 100%;
     background: rgba(255, 255, 255, 0.6);
     opacity: 0;
-    visibility: hidden;
+    // visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
 
@@ -44,6 +46,12 @@
     color: var(--color-main);
   }
 
+  &__btns {
+    &--active {
+      opacity: 1;
+    }
+  }
+
   &__btn {
     display: flex;
     align-items: center;
@@ -58,10 +66,13 @@
       width: 30px;
       height: 30px;
       object-fit: cover;
+      fill: var(--color-white);
     }
 
-    &:hover {
-      background-color: var(--color-main-hover);
+    @include desktop {
+      &:hover {
+        background-color: var(--color-main-hover);
+      }
     }
 
     &:first-child {
@@ -74,10 +85,12 @@
     }
   }
 
-  &:hover {
-    .product__btns {
-      opacity: 1;
-      visibility: visible;
+  @include desktop {
+    &:hover {
+      .product__btns {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }
@@ -125,6 +138,7 @@
   }
 
   &__delete {
+    flex-shrink: 0;
     width: 20px;
     height: 20px;
     font-size: 0;

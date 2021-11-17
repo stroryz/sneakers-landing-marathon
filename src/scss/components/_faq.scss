@@ -1,9 +1,15 @@
+@import "../mixins";
+
 .faq {
   padding: var(--big-offset) 0;
 
   &__list {
     margin: 0 auto;
     max-width: 880px;
+  }
+
+  @include mobile {
+    padding: var(--main-offset) 0;
   }
 }
 

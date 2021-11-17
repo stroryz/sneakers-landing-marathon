@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .team {
   position: relative;
   padding: var(--big-offset) 0;
@@ -8,6 +10,10 @@
     position: absolute;
     top: 0;
     right: 0;
+
+    @include small-tablet {
+      display: none;
+    }
   }
 
   &__title {
