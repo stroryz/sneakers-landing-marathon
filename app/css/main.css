@@ -1081,6 +1081,7 @@ a {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transform: rotate(45deg);
   transition: transform 0.3s ease-out;
 }
 .faq-accordion:not(:first-child) {
@@ -1088,7 +1089,7 @@ a {
 }
 
 .open .faq-accordion__icon {
-  transform: rotate(45deg);
+  transform: rotate(0deg);
 }
 
 .open .faq-accordion__content {
