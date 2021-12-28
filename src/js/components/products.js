@@ -78,6 +78,22 @@ if (catalogList) {
           $clamp(el, {clamp: '22px'});
         });
 
+        const productBtns = document.querySelectorAll('.product__btn');
+
+        productBtns.forEach(el => {
+          el.addEventListener('focus', (e) => {
+            let parent = e.currentTarget.closest('.product__btns');
+            parent.classList.add('product__btns--active');
+          }, true);
+        });
+
+        productBtns.forEach(el => {
+          el.addEventListener('blur', (e) => {
+            let parent = e.currentTarget.closest('.product__btns');
+            parent.classList.remove('product__btns--active');
+          }, true);
+        });
+
         // Корзина
         cartLogic();
 
@@ -311,6 +327,8 @@ const cartLogic = () => {
       const id = e.currentTarget.dataset.id;
       loadCartData(id);
 
+      document.querySelector('.cart__btn').classList.remove('cart__btn--inactive');
+
       e.currentTarget.classList.add('product__btn--disabled')
     })
   })
@@ -332,6 +350,7 @@ const cartLogic = () => {
       if (num == 0) {
         cartCount.classList.remove('cart__count--visible');
         miniCart.classList.remove('mini-cart--visible');
+        document.querySelector('.cart__btn').classList.add('cart__btn--inactive');
       }
       printQuantity(num);
     }
@@ -363,25 +382,37 @@ orderModalShow.addEventListener('click', () => {
 });
 
 // TODO Доделать удаление из модалки
-// orderModalList.addEventListener('click', e => {
-//   if (e.target.classList.contains('mini-product__delete')) {
-//     const self = e.target;
-//     const parent = self.closest('.mini-cart__item');
-//     const price = parseInt(priceWithoutSpaces(parent.querySelector('.mini-product__price').textContent));
-//     const id = parent.dataset.id;
+orderModalList.addEventListener('click', e => {
+  if (e.target.classList.contains('mini-product__delete')) {
+    const self = e.target;
+    const parent = self.closest('.mini-cart__item');
+    const price = parseInt(priceWithoutSpaces(parent.querySelector('.mini-product__price').textContent));
+    const id = parent.dataset.id;
 
-//     document.querySelector(`.add-to-cart-btn[data-id="${id}"]`).classList.remove('product__btn--disabled')
+    document.querySelector(`.add-to-cart-btn[data-id="${id}"]`).classList.remove('product__btn--disabled');
 
-//     parent.remove();
+    parent.style.display = 'none';
 
-//     minusFullPrice(price);
-//     printFullPrice();
-//     let num = document.querySelectorAll('.cart-modal-order__list .mini-cart__item').length;
-//     if (num == 0) {
-//       cartCount.classList.remove('cart__count--visible');
-//       miniCart.classList.remove('mini-cart--visible');
-//     }
-//     printQuantity(num);
-//   }
-// });
+    setTimeout(() => {
+      parent.remove();
+      document.querySelector(`.mini-cart__item[data-id="${id}"]`).remove();
+    }, 100);
+
+    minusFullPrice(price);
+    printFullPrice();
+
+    setTimeout(() => {
+      let num = document.querySelectorAll('.cart-modal-order__list .mini-cart__item').length;
+      if (num == 0) {
+        cartCount.classList.remove('cart__count--visible');
+        miniCart.classList.remove('mini-cart--visible');
+        document.querySelector('.cart__btn').classList.add('cart__btn--inactive');
+
+        modal.close();
+      }
+      printQuantity(num);
+    }, 100);
+
+  }
+});
 

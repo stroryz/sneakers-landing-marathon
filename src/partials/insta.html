@@ -7,16 +7,24 @@
         <p class="instagram__descr">
           Заполните форму и&nbsp;наш менеджер свяжется с&nbsp;вами
         </p>
-        <input
-          type="text"
-          class="input instagram__input"
-          placeholder="Ваше имя"
-        />
-        <input
-          type="tel"
-          class="input instagram__input"
-          placeholder="Номер телефона"
-        />
+        <label class="form-label">
+          <input
+            type="text"
+            class="input instagram__input"
+            placeholder="Ваше имя"
+            name="name"
+            data-validate-field="name"
+          />
+        </label>
+        <label class="form-label">
+          <input
+            type="tel"
+            class="input instagram__input"
+            placeholder="Номер телефона"
+            name="phone"
+            data-validate-field="phone"
+          />
+        </label>
         <button class="btn btn--primary btn-reset instagram__btn">
           Отправить
         </button>
@@ -31,18 +39,23 @@
       /></a>
       <div class="instagram__content">
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-1.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-2.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-3.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-4.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-5.jpg" alt="" />
         </article>
       </div>

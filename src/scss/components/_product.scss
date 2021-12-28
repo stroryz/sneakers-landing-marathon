@@ -17,6 +17,10 @@
     opacity: 0;
     // visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    @include mobile {
+      opacity: 1;
+    }
   }
 
   &__image {
@@ -53,6 +57,7 @@
   }
 
   &__btn {
+    outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,9 +74,17 @@
       fill: var(--color-white);
     }
 
+    &:focus {
+      background-color: var(--color-main-hover);
+    }
+
     @include desktop {
       &:hover {
         background-color: var(--color-main-hover);
+      }
+
+      &:active {
+        background-color: var(--color-accent-hover);
       }
     }
 
@@ -111,6 +124,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    @include mobile {
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -205,6 +223,10 @@
       svg {
         display: none;
       }
+    }
+
+    @include mobile {
+      display: block;
     }
   }
 }

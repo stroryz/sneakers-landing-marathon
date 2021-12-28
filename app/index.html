@@ -35,8 +35,11 @@
           <li class="nav__item"><a href="" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
+      <button class="burger btn-reset">
+        <span class="burger__line"></span>
+      </button>
       <div class="cart header__cart">
-        <button class="btn-reset cart cart__btn">
+        <button class="btn-reset cart cart__btn cart__btn--inactive">
           <svg>
             <use xlink:href="img/sprite.svg#cart"></use>
           </svg>
@@ -44,77 +47,7 @@
         </button>
         <div class="mini-cart">
           <div class="mini-cart__top" data-simplebar>
-            <ul class="mini-cart__list list-reset">
-              <!-- <li class="mini-cart__item">
-                <article class="mini-cart__product mini-product">
-                  <div class="mini-product__image">
-                    <img src="img/product-image.jpg" alt="" />
-                  </div>
-                  <div class="mini-product__content">
-                    <div class="mini-product__text">
-                      <h3 class="mini-product__title">
-                        Женские кроссовки Puma Force 1 Shadow
-                      </h3>
-                      <span class="mini-product__price">8 678 р</span>
-                    </div>
-                    <button
-                      class="btn-reset mini-product__delete"
-                      aria-label="Удалить товар"
-                    >
-                      <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-              </li>
-              <li class="mini-cart__item">
-                <article class="mini-cart__product mini-product">
-                  <div class="mini-product__image">
-                    <img src="img/product-image.jpg" alt="" />
-                  </div>
-                  <div class="mini-product__content">
-                    <div class="mini-product__text">
-                      <h3 class="mini-product__title">
-                        Женские кроссовки Puma Force 1 Shadow
-                      </h3>
-                      <span class="mini-product__price">8 678 р</span>
-                    </div>
-                    <button
-                      class="btn-reset mini-product__delete"
-                      aria-label="Удалить товар"
-                    >
-                      <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-              </li>
-              <li class="mini-cart__item">
-                <article class="mini-cart__product mini-product">
-                  <div class="mini-product__image">
-                    <img src="img/product-image.jpg" alt="" />
-                  </div>
-                  <div class="mini-product__content">
-                    <div class="mini-product__text">
-                      <h3 class="mini-product__title">
-                        Женские кроссовки Puma Force 1 Shadow
-                      </h3>
-                      <span class="mini-product__price">8 678 р</span>
-                    </div>
-                    <button
-                      class="btn-reset mini-product__delete"
-                      aria-label="Удалить товар"
-                    >
-                      <svg>
-                        <use xlink:href="img/sprite.svg#trash"></use>
-                      </svg>
-                    </button>
-                  </div>
-                </article>
-              </li> -->
-            </ul>
+            <ul class="mini-cart__list list-reset"></ul>
           </div>
           <div class="mini-cart__bottom">
             <div class="mini-cart__itog">
@@ -675,16 +608,24 @@
         <p class="instagram__descr">
           Заполните форму и&nbsp;наш менеджер свяжется с&nbsp;вами
         </p>
-        <input
-          type="text"
-          class="input instagram__input"
-          placeholder="Ваше имя"
-        />
-        <input
-          type="tel"
-          class="input instagram__input"
-          placeholder="Номер телефона"
-        />
+        <label class="form-label">
+          <input
+            type="text"
+            class="input instagram__input"
+            placeholder="Ваше имя"
+            name="name"
+            data-validate-field="name"
+          />
+        </label>
+        <label class="form-label">
+          <input
+            type="tel"
+            class="input instagram__input"
+            placeholder="Номер телефона"
+            name="phone"
+            data-validate-field="phone"
+          />
+        </label>
         <button class="btn btn--primary btn-reset instagram__btn">
           Отправить
         </button>
@@ -699,18 +640,23 @@
       /></a>
       <div class="instagram__content">
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-1.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-2.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-3.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-4.jpg" alt="" />
         </article>
         <article class="instagram__item">
+          <h3 class="instagram__subtitle visually-hidden">Некое фото</h3>
           <img src="img/instag-5.jpg" alt="" />
         </article>
       </div>
@@ -932,18 +878,21 @@
           class="input cart-modal__input"
           name="name"
           placeholder="Ваше имя"
+          data-validate-field="name"
         />
         <input
           type="tel"
           class="input cart-modal__input"
           name="tel"
           placeholder="Номер телефона"
+          data-validate-field="phone"
         />
         <input
           type="email"
           class="input cart-modal__input"
           name="email"
           placeholder="E-mail"
+          data-validate-field="email"
         />
         <button class="btn btn-reset btn--primary cart-modal__btn">
           Оформить заказ

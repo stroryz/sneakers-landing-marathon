@@ -2,6 +2,38 @@
 "use strict";
 "use strict";
 
+function disableScroll() {
+  var pagePosition = window.scrollY;
+  document.body.classList.add('disable-scroll');
+  document.body.dataset.position = pagePosition;
+  document.body.style.top = -pagePosition + 'px';
+}
+
+function enableScroll() {
+  var pagePosition = parseInt(document.body.dataset.position, 10);
+  document.body.style.top = 'auto';
+  document.body.classList.remove('disable-scroll');
+  window.scroll({
+    top: pagePosition,
+    left: 0
+  });
+  document.body.removeAttribute('data-position');
+}
+
+var burger = document.querySelector('.burger');
+var menu = document.querySelector('.header__nav');
+burger.addEventListener('click', function () {
+  burger.classList.toggle('burger--active');
+  menu.classList.toggle('header__nav--active');
+
+  if (burger.classList.contains('burger--active')) {
+    disableScroll();
+  } else {
+    enableScroll();
+  }
+});
+"use strict";
+
 var cartBtn = document.querySelector('.cart__btn');
 var miniCart = document.querySelector('.mini-cart');
 cartBtn.addEventListener('click', function () {
@@ -140,6 +172,19 @@ if (catalogList) {
         $clamp(el, {
           clamp: '22px'
         });
+      });
+      var productBtns = document.querySelectorAll('.product__btn');
+      productBtns.forEach(function (el) {
+        el.addEventListener('focus', function (e) {
+          var parent = e.currentTarget.closest('.product__btns');
+          parent.classList.add('product__btns--active');
+        }, true);
+      });
+      productBtns.forEach(function (el) {
+        el.addEventListener('blur', function (e) {
+          var parent = e.currentTarget.closest('.product__btns');
+          parent.classList.remove('product__btns--active');
+        }, true);
       }); // Корзина
 
       cartLogic();
@@ -316,6 +361,7 @@ var cartLogic = function cartLogic() {
     el.addEventListener('click', function (e) {
       var id = e.currentTarget.dataset.id;
       loadCartData(id);
+      document.querySelector('.cart__btn').classList.remove('cart__btn--inactive');
       e.currentTarget.classList.add('product__btn--disabled');
     });
   });
@@ -336,6 +382,7 @@ var cartLogic = function cartLogic() {
       if (num == 0) {
         cartCount.classList.remove('cart__count--visible');
         miniCart.classList.remove('mini-cart--visible');
+        document.querySelector('.cart__btn').classList.add('cart__btn--inactive');
       }
 
       printQuantity(num);
@@ -363,24 +410,37 @@ orderModalShow.addEventListener('click', function () {
     orderModalShow.classList.add('.cart-modal-order__show--active');
   }
 }); // TODO Доделать удаление из модалки
-// orderModalList.addEventListener('click', e => {
-//   if (e.target.classList.contains('mini-product__delete')) {
-//     const self = e.target;
-//     const parent = self.closest('.mini-cart__item');
-//     const price = parseInt(priceWithoutSpaces(parent.querySelector('.mini-product__price').textContent));
-//     const id = parent.dataset.id;
-//     document.querySelector(`.add-to-cart-btn[data-id="${id}"]`).classList.remove('product__btn--disabled')
-//     parent.remove();
-//     minusFullPrice(price);
-//     printFullPrice();
-//     let num = document.querySelectorAll('.cart-modal-order__list .mini-cart__item').length;
-//     if (num == 0) {
-//       cartCount.classList.remove('cart__count--visible');
-//       miniCart.classList.remove('mini-cart--visible');
-//     }
-//     printQuantity(num);
-//   }
-// });
+
+orderModalList.addEventListener('click', function (e) {
+  if (e.target.classList.contains('mini-product__delete')) {
+    var self = e.target;
+    var parent = self.closest('.mini-cart__item');
+
+    var _price2 = parseInt(priceWithoutSpaces(parent.querySelector('.mini-product__price').textContent));
+
+    var id = parent.dataset.id;
+    document.querySelector(".add-to-cart-btn[data-id=\"".concat(id, "\"]")).classList.remove('product__btn--disabled');
+    parent.style.display = 'none';
+    setTimeout(function () {
+      parent.remove();
+      document.querySelector(".mini-cart__item[data-id=\"".concat(id, "\"]")).remove();
+    }, 100);
+    minusFullPrice(_price2);
+    printFullPrice();
+    setTimeout(function () {
+      var num = document.querySelectorAll('.cart-modal-order__list .mini-cart__item').length;
+
+      if (num == 0) {
+        cartCount.classList.remove('cart__count--visible');
+        miniCart.classList.remove('mini-cart--visible');
+        document.querySelector('.cart__btn').classList.add('cart__btn--inactive');
+        modal.close();
+      }
+
+      printQuantity(num);
+    }, 100);
+  }
+});
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -397,6 +457,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var quizFormData = null;
+var textareaText = null;
 var quizData = [{
   number: 1,
   title: "Какой тип кроссовок рассматриваете?",
@@ -504,6 +566,8 @@ var Quiz = /*#__PURE__*/function () {
   }, {
     key: "nextQuestion",
     value: function nextQuestion() {
+      var _this = this;
+
       // console.log('next question!');
       if (this.valid()) {
         if (this.counter + 1 < this.dataLength) {
@@ -519,6 +583,47 @@ var Quiz = /*#__PURE__*/function () {
           document.querySelector('.last-question').style.display = 'block';
           document.querySelector('.quiz__title').textContent = 'Ваша подборка готова!';
           document.querySelector('.quiz__descr').textContent = 'Оставьте свои контактные данные, чтобы бы мы могли отправить  подготовленный для вас каталог';
+          document.querySelector('.quiz-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            quizFormData = new FormData();
+            console.log(_this.resultArray);
+
+            var _iterator = _createForOfIteratorHelper(_this.resultArray),
+                _step;
+
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                var item = _step.value;
+
+                for (var obj in item) {
+                  quizFormData.append(obj, item[obj].substring(0, item[obj].length - 1));
+                }
+              }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+
+            quizFormData.append('textarea', textareaText);
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                  console.log('Отправлено');
+                }
+              }
+            };
+
+            document.querySelector('.quiz-form').querySelectorAll('input').forEach(function (el) {
+              if (el.value) {
+                xhr.open('POST', 'mail.php', true);
+                xhr.send(quizFormData);
+                document.querySelector('.quiz-form').reset();
+              }
+            });
+          });
         }
       } else {
         console.log('Не валидно!');
@@ -527,31 +632,31 @@ var Quiz = /*#__PURE__*/function () {
   }, {
     key: "events",
     value: function events() {
-      var _this = this;
+      var _this2 = this;
 
       // console.log('events!')
       this.$el.addEventListener('click', function (e) {
         if (e.target == document.querySelector('[data-next-btn]')) {
-          _this.addToSend();
+          _this2.addToSend();
 
-          _this.nextQuestion();
-        }
-
-        if (e.target == document.querySelector('[data-send]')) {
-          _this.send();
+          _this2.nextQuestion();
         }
       });
       this.$el.addEventListener('change', function (e) {
         if (e.target.tagName == 'INPUT') {
           if (e.target.type !== 'checkbox' && e.target.type !== 'radio') {
-            var elements = _this.$el.querySelectorAll('input');
+            var elements = _this2.$el.querySelectorAll('input');
 
             elements.forEach(function (el) {
               el.checked = false;
             });
           }
 
-          _this.tmp = _this.serialize(_this.$el);
+          _this2.tmp = _this2.serialize(document.querySelector('.quiz-form'));
+        } else {
+          var textarea = _this2.$el.querySelector('textarea');
+
+          textareaText = textarea.value;
         }
       });
     }
@@ -604,35 +709,6 @@ var Quiz = /*#__PURE__*/function () {
     key: "addToSend",
     value: function addToSend() {
       this.resultArray.push(this.tmp);
-    }
-  }, {
-    key: "send",
-    value: function send() {
-      if (this.valid()) {
-        var formData = new FormData();
-
-        var _iterator = _createForOfIteratorHelper(this.resultArray),
-            _step;
-
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var item = _step.value;
-
-            for (var obj in item) {
-              formData.append(obj, item[obj].substring(0, item[obj].length - 1));
-            }
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-
-        var response = fetch("mail.php", {
-          method: 'POST',
-          body: formData
-        });
-      }
     }
   }, {
     key: "serialize",
@@ -706,6 +782,105 @@ if (rangeSlider) {
     });
   });
 }
+"use strict";
+
+var styles = getComputedStyle(document.documentElement);
+var colorValue = styles.getPropertyValue('--color-accent');
+var selector = document.querySelector('input[type="tel"]');
+var im = new Inputmask("+7 (999) 999-9999");
+im.mask(selector);
+var productsFormData = null;
+
+var validateForms = function validateForms(selector, rules, messages, successModal, yaGoal) {
+  new window.JustValidate(selector, {
+    rules: rules,
+    messages: messages,
+    colorWrong: colorValue,
+    submitHandler: function submitHandler(form) {
+      console.log(form);
+
+      if (form.classList.contains('cart-modal__form')) {
+        productsFormData = new FormData(document.querySelector('.cart-modal__form'));
+        document.querySelectorAll('.cart-modal-order__list .mini-cart__item').forEach(function (el, idx) {
+          var title = el.querySelector('.mini-product__title').textContent;
+          var price = el.querySelector('.mini-product__price').textContent;
+          productsFormData.append("product-".concat(idx + 1), "".concat(title, ", ").concat(price));
+        });
+        productsFormData.append("summ", "".concat(document.querySelector('.cart-modal-order__summ span').textContent));
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              console.log('Отправлено');
+            }
+          }
+        };
+
+        xhr.open('POST', 'mail.php', true);
+        xhr.send(productsFormData);
+        form.reset();
+      } else {
+        var formData = new FormData(form);
+
+        var _xhr = new XMLHttpRequest();
+
+        _xhr.onreadystatechange = function () {
+          if (_xhr.readyState === 4) {
+            if (_xhr.status === 200) {
+              console.log('Отправлено');
+            }
+          }
+        };
+
+        _xhr.open('POST', 'mail.php', true);
+
+        _xhr.send(formData);
+
+        form.reset();
+      }
+    }
+  });
+};
+
+validateForms('.callback-form', {
+  name: {
+    required: true
+  },
+  phone: {
+    required: true
+  }
+}, {
+  name: {
+    required: 'Вы должны ввести имя'
+  },
+  phone: {
+    required: 'Вы должны ввести телефон'
+  }
+}, '.thanks-popup');
+validateForms('.cart-modal__form', {
+  name: {
+    required: true
+  },
+  phone: {
+    required: true
+  },
+  email: {
+    required: true,
+    email: true
+  }
+}, {
+  name: {
+    required: 'Вы должны ввести имя'
+  },
+  phone: {
+    required: 'Вы должны ввести телефон'
+  },
+  email: {
+    required: 'Вы должны ввести email',
+    email: 'Вы должны ввести корректный email'
+  }
+}, '.thanks-popup');
 /**
   * название функции
   *
